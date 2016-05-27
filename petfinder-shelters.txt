@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<petfinder xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://api.petfinder.com/schemas/0.9/petfinder.xsd">
+ <header>
+  <version>0.1</version>
+  <timestamp>2016-05-27T01:08:28Z</timestamp>
+  <status>
+   <code>100</code>
+   <message />
+  </status>
+ </header>
+ <lastOffset>25</lastOffset>
+ <shelters>
+  <shelter>
+   <id>QC108</id>
+   <name>Refuge Blitz</name>
+   <address1 />
+   <address2 />
+   <city>Levis</city>
+   <state>QC</state>
+   <zip>G6V 7M5</zip>
+   <country>CA</country>
+   <latitude>46.804</latitude>
+   <longitude>-71.175</longitude>
+   <phone />
+   <fax />
+   <email>refugeblitz@gmail.com</email>
+  </shelter>
+  <shelter>
+   <id>QC106</id>
+   <name>S.P.A. Beauce-Etchemin</name>
+   <address1>733, Route Kennedy</address1>
+   <address2 />
+   <city>Beauceville</city>
+   <state>QC</state>
+   <zip>G5X 1C2</zip>
+   <country>CA</country>
+   <latitude>46.1992</latitude>
+   <longitude>-70.7619</longitude>
+   <phone> </phone>
+   <fax />
+   <email>spabeauceetchemin@hotmail.com</email>
+  </shelter>
+  <shelter>
+   <id>ME102</id>
+   <name>PAWS Animal Welfare Society, Inc.</name>
+   <address1>PO Box 94</address1>
+   <address2 />
+   <city>Fort Kent</city>
+   <state>ME</state>
+   <zip>04743</zip>
+   <country>US</country>
+   <latitude>47.2586</latitude>
+   <longitude>-68.59</longitude>
+   <phone>2075437348</phone>
+   <fax />
+   <email>angelann70@hotmail.com</email>
+  </shelter>
+  <shelter>
+   <id>ME14</id>
+   <name>Central Aroostook Humane Society</name>
+   <address1>26 Cross Street</address1>
+   <address2 />
+   <city>Presque Isle</city>
+   <state>ME</state>
+   <zip>04769</zip>
+   <country>US</country>
+   <latitude>46.6876</latitude>
+   <longitude>-68.0123</longitude>
+   <phone>207-764-3441  </phone>
+   <fax>207-764-3441</fax>
+   <email>centralaroostookhs@hotmail.com</email>
+  </shelter>
+  <shelter>
+   <id>NB20</id>
+   <name>Valley SPCA La Vallee Inc.</name>
+   <address1 />
+   <address2 />
+   <city>Dsl De Drummond</city>
+   <state>NB</state>
+   <zip>E3Y 1X4</zip>
+   <country>CA</country>
+   <latitude>47.05</latitude>
+   <longitude>-67.733333</longitude>
+   <phone>(506) 473-1803</phone>
+   <fax />
+   <email>info@valleyspcalavallee.com</email>
+  </shelter>
+  <shelter>
+   <id>QC44</id>
+   <name>SPA de l'Estrie</name>
+   <address1>1139, boul. Queen Victoria</address1>
+   <address2 />
+   <city>Sherbrooke</city>
+   <state>QC</state>
+   <zip>J1j 4N5</zip>
+   <country>CA</country>
+   <latitude>45.419</latitude>
+   <longitude>-71.921</longitude>
+   <phone>819 821-4727     </phone>
+   <fax>819 823-1573</fax>
+   <email>infos@spaestrie.qc.ca</email>
+  </shelter>
+  <shelter>
+   <id>QC94</id>
+   <name>Adoption Wakanda</name>
+   <address1 />
+   <address2 />
+   <city>Berthierville</city>
+   <state>QC</state>
+   <zip>J0K 1A0</zip>
+   <country>CA</country>
+   <latitude>46.083333</latitude>
+   <longitude>-73.166667</longitude>
+   <phone />
+   <fax />
+   <email>wakanda.4.adoption@gmail.com</email>
+  </shelter>
+  <shelter>
+   <id>NB19</id>
+   <name>DunRoamin' Stray and Rescue</name>
+   <address1>PO Box 574</address1>
+   <address2 />
+   <city>Florenceville</city>
+   <state>NB</state>
+   <zip>E7L 1Y8</zip>
+   <country>CA</country>
+   <latitude>46.165</latitude>
+   <longitude>-67.56</longitude>
+   <phone> </phone>
+   <fax />
+   <email>dunroaminpetfinder@outlook.com</email>
+  </shelter>
+  <shelter>
+   <id>QC45</id>
+   <name>Fondation Caramel</name>
+   <address1 />
+   <address2 />
+   <city>Saint-Valérien de Milton</city>
+   <state>QC</state>
+   <zip>J0H 2B0</zip>
+   <country>CA</country>
+   <latitude>45.566667</latitude>
+   <longitude>-72.716667</longitude>
+   <phone>450-549-2935</phone>
+   <fax>450-793-2911</fax>
+   <email>caramelle@telupton.com</email>
+  </shelter>
+  <shelter>
+   <id>QC41</id>
+   <name>SPCA Monteregie</name>
+   <address1>178 Chemin du Vide</address1>
+   <address2 />
+   <city>Sainte-Angele-de-Monnoir</city>
+   <state>QC</state>
+   <zip>J0L 1P0</zip>
+   <country>CA</country>
+   <latitude>45.783333</latitude>
+   <longitude>-73.15</longitude>
+   <phone>info@spcamonteregie.com</phone>
+   <fax />
+   <email>info@spcamonteregie.com</email>
+  </shelter>
+  <shelter>
+   <id>QC105</id>
+   <name>Chats sans toi-t</name>
+   <address1>850 rue Forster</address1>
+   <address2 />
+   <city>Chertsey</city>
+   <state>QC</state>
+   <zip>J0K 3K0</zip>
+   <country>CA</country>
+   <latitude>46.05</latitude>
+   <longitude>-73.733333</longitude>
+   <phone />
+   <fax />
+   <email>chatssanstoi-t@hotmail.com</email>
+  </shelter>
+  <shelter>
+   <id>QC82</id>
+   <name>Les Felins de la Vallee</name>
+   <address1 />
+   <address2 />
+   <city>Beloeil</city>
+   <state>QC</state>
+   <zip>J3G 5N1</zip>
+   <country>CA</country>
+   <latitude>45.566667</latitude>
+   <longitude>-73.2</longitude>
+   <phone>438-832-4287   </phone>
+   <fax />
+   <email>info@lesfelinsdelavallee.com</email>
+  </shelter>
+  <shelter>
+   <id>QC107</id>
+   <name>SPCA Lanaudiere Basses Laurentides</name>
+   <address1>7695 Route 335</address1>
+   <address2 />
+   <city>Saint-Calixte</city>
+   <state>QC</state>
+   <zip>J0K 1Z0</zip>
+   <country>CA</country>
+   <latitude>45.966667</latitude>
+   <longitude>-73.716667</longitude>
+   <phone>450 222 1112</phone>
+   <fax />
+   <email>lucie_duquette@hotmail.com</email>
+  </shelter>
+  <shelter>
+   <id>QC81</id>
+   <name>Frontier Animal Society</name>
+   <address1 />
+   <address2 />
+   <city>Stanstead</city>
+   <state>QC</state>
+   <zip>J0B 3E0</zip>
+   <country>CA</country>
+   <latitude>45.016667</latitude>
+   <longitude>-72.083333</longitude>
+   <phone>819.876.7747  </phone>
+   <fax />
+   <email>frontieranimalsociety@gmail.com</email>
+  </shelter>
+  <shelter>
+   <id>QC83</id>
+   <name>SPA des Cantons</name>
+   <address1>409 rue Riviere</address1>
+   <address2 />
+   <city>Cowansville</city>
+   <state>QC</state>
+   <zip>J2K 1N4</zip>
+   <country>CA</country>
+   <latitude>45.2</latitude>
+   <longitude>-72.75</longitude>
+   <phone>450-263-1117</phone>
+   <fax />
+   <email>info@spadescantons.com</email>
+  </shelter>
+  <shelter>
+   <id>ME20</id>
+   <name>Somerset Humane Society</name>
+   <address1>123 Middle Rd.</address1>
+   <address2>P.O. Box 453</address2>
+   <city>Skowhegan</city>
+   <state>ME</state>
+   <zip>04976</zip>
+   <country>US</country>
+   <latitude>44.7689</latitude>
+   <longitude>-69.7146</longitude>
+   <phone>207-474-6493  </phone>
+   <fax />
+   <email>shsanimals.forever@yahoo.com</email>
+  </shelter>
+  <shelter>
+   <id>QC89</id>
+   <name>Les Chats sans toit - Chambly</name>
+   <address1>1258 St-Joseph</address1>
+   <address2 />
+   <city>Chambly</city>
+   <state>QC</state>
+   <zip>J3L 5X1</zip>
+   <country>CA</country>
+   <latitude>45.45</latitude>
+   <longitude>-73.283333</longitude>
+   <phone>450 447-9394 </phone>
+   <fax />
+   <email>chatssanstoit@gmail.com</email>
+  </shelter>
+  <shelter>
+   <id>QC76</id>
+   <name>Fondation HVE</name>
+   <address1 />
+   <address2 />
+   <city>Anjou</city>
+   <state>QC</state>
+   <zip>H1K 1N6</zip>
+   <country>CA</country>
+   <latitude>45.623</latitude>
+   <longitude>-73.532</longitude>
+   <phone />
+   <fax />
+   <email>fondationhve@gmail.com</email>
+  </shelter>
+  <shelter>
+   <id>VT09</id>
+   <name>Pope Memorial Frontier Animal Shelter Inc.</name>
+   <address1>4473 Barton-Orleans Rd.</address1>
+   <address2 />
+   <city>Orleans</city>
+   <state>VT</state>
+   <zip>05855</zip>
+   <country>US</country>
+   <latitude>44.9429</latitude>
+   <longitude>-72.2163</longitude>
+   <phone>802-754-2228 </phone>
+   <fax>802-754-2244</fax>
+   <email>animals@fasv.comcastbiz.net</email>
+  </shelter>
+  <shelter>
+   <id>ME43</id>
+   <name>Franklin County Animal Shelter</name>
+   <address1>550 Industry Road</address1>
+   <address2 />
+   <city>Farmington</city>
+   <state>ME</state>
+   <zip>04938</zip>
+   <country>US</country>
+   <latitude>44.6625</latitude>
+   <longitude>-70.1768</longitude>
+   <phone>207-778-2638  </phone>
+   <fax />
+   <email>info@fcanimalshelter.org</email>
+  </shelter>
+  <shelter>
+   <id>QC64</id>
+   <name>Moustache</name>
+   <address1 />
+   <address2 />
+   <city>Montreal</city>
+   <state>QC</state>
+   <zip>H1M 1H6</zip>
+   <country>CA</country>
+   <latitude>45.59</latitude>
+   <longitude>-73.553</longitude>
+   <phone />
+   <fax />
+   <email>primeann@aol.com</email>
+  </shelter>
+  <shelter>
+   <id>QC100</id>
+   <name>Refuge Chat-Va-Mieux Shelter</name>
+   <address1 />
+   <address2 />
+   <city>Saint-Hubert</city>
+   <state>QC</state>
+   <zip>J3Y 4K1</zip>
+   <country>CA</country>
+   <latitude>45.475</latitude>
+   <longitude>-73.426</longitude>
+   <phone>514 726 3571</phone>
+   <fax />
+   <email>assml@videotron.ca</email>
+  </shelter>
+  <shelter>
+   <id>NB08</id>
+   <name>Restigouche County SPCA</name>
+   <address1>165 Baybreeze Drive</address1>
+   <address2 />
+   <city>Dalhousie</city>
+   <state>NB</state>
+   <zip>E8C 1E4</zip>
+   <country>CA</country>
+   <latitude>48.066667</latitude>
+   <longitude>-66.383333</longitude>
+   <phone>506-684-4396</phone>
+   <fax>506-684-3875</fax>
+   <email>receptionspca@bellaliant.com</email>
+  </shelter>
+  <shelter>
+   <id>QC04</id>
+   <name>Animal Rescue Network / Réseau Secours Animal</name>
+   <address1>B.P. 32203 St.-Andre</address1>
+   <address2 />
+   <city>Montreal</city>
+   <state>QC</state>
+   <zip>H2L 4Y5</zip>
+   <country>CA</country>
+   <latitude>45.52</latitude>
+   <longitude>-73.561</longitude>
+   <phone>514-938-6215   </phone>
+   <fax />
+   <email>arnadoptions@gmail.com</email>
+  </shelter>
+  <shelter>
+   <id>QC23</id>
+   <name>Sophie's Dog Adoption</name>
+   <address1 />
+   <address2 />
+   <city>Montreal</city>
+   <state>QC</state>
+   <zip>H2L 1R8</zip>
+   <country>CA</country>
+   <latitude>45.52</latitude>
+   <longitude>-73.561</longitude>
+   <phone>(514) 804-5052</phone>
+   <fax />
+   <email>info@sophiesdogadoption.com</email>
+  </shelter>
+ </shelters>
+</petfinder>
+
