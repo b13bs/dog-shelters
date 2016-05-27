@@ -58,3 +58,9 @@ docs/_build/
 # PyBuilder
 target/
 
+# ignore python pickle files
+*.pickle
+*.p
+
+# doesnt push config file
+secrets.py

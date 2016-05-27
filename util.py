@@ -27,14 +27,9 @@ def get_prec_values():
 
 def write_prec_values(values):
     pickle.dump(values, open("stored_values.p", "wb"))
-            
-
-def notify_me(title, body):
-    pb = Pushbullet("o.MQZoSy4G2mXcdommoMy2KZUqxch5ogcE")
-    push = pb.push_note(title, "Refuge %s" % body)
     logger = logging.getLogger('adoptions')
-    logger.critical(push)
-
+    logger.debug("pickled to disk: %s" % values)
+            
 
 def is_first_run():
     try:

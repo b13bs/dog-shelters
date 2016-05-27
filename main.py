@@ -1,10 +1,17 @@
 #!/usr/bin/python3
 
 import sys
-from pprint import pprint
 import logging
-from refuges import *
 import util
+from shelters import *
+from pprint import pprint
+
+### Create your module for api key and notification method
+try:
+    import secrets
+except ImportError:
+    print("Comment import line or create secrets.py module")
+    sys.exit()
 
 logger = logging.getLogger('adoptions')
 logger.setLevel(logging.DEBUG)
@@ -20,46 +27,43 @@ logger.debug("is first run: %s" % is_first_run)
 prec_values = util.get_prec_values()
 new_dict = {}
 
-for refuge, nb_prec in prec_values.items():
+for shelter, nb_prev in prec_values.items():
     try:
-        if refuge == "animadoption":
+        if shelter == "animadoption":
+            nb_dogs = check_animadoption()
+
+        elif shelter == "aubergezen":
+            nb_dogs = check_aubergezen()
+
+        elif shelter == "bergerblancmontreal":
+            nb_dogs = check_bergerblanc("montreal")
+
+        elif shelter == "bergerblanclaval":
+            nb_dogs = check_bergerblanc("laval")
+
+        elif shelter == "spcalaurentides":
+            nb_dogs = check_spcalaurentides()
+
+        elif shelter == "nouveaudepart":
+            nb_dogs = check_nouveaudepart()
+
+        elif shelter == "spcamontreal":
             continue
-            nb_chiens = check_animadoption()
+            nb_dogs = check_spcamontreal()
 
-        elif refuge == "aubergezen":
-            continue
-            nb_chiens = check_aubergezen()
+        logger.info("%s: nb dogs=%s" % (shelter, nb_dogs))
 
-        elif refuge == "bergerblancmontreal":
-            nb_chiens = check_bergerblanc("montreal")
-
-        elif refuge == "bergerblanclaval":
-            nb_chiens = check_bergerblanc("laval")
-
-        elif refuge == "spcalaurentides":
-            continue
-            nb_chiens = check_spcalaurentides()
-
-        elif refuge == "nouveaudepart":
-            continue
-            nb_chiens = check_nouveaudepart()
-
-        elif refuge == "spcamontreal":
-            continue
-            nb_chiens = check_spcamontreal()
-
-        logger.info("%s: nb chiens=%s" % (refuge, nb_chiens))
-
-        if nb_chiens > nb_prec and not is_first_run:
-            msg = "NOUVEAU CHIEN à %s! %s -> %s" % (refuge, nb_prec, nb_chiens)
+        if nb_dogs > nb_prev and not is_first_run:
+            msg = " à %s! %s -> %s" % (shelter, nb_prev, nb_dogs)
             logger.critical(msg)
-            util.notify_me(msg, refuge)
+            secrets.notify_me(msg, shelter)
 
-        new_dict[refuge] = nb_chiens
+        new_dict[shelter] = nb_dogs
 
     except util.MyException as e:
-        new_dict[refuge] = nb_prec
+        new_dict[shelter] = nb_prev
         logger.error(e)
+        secrets.notify_me("Adoptions", e)
 
 util.write_prec_values(new_dict)
 logger.debug("")
