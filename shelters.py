@@ -16,12 +16,11 @@ except ImportError:
     sys.exit()
 
 
-def check_animadoption():
-    url = "https://www.facebook.com/media/set/?set=a.728949963803199.1073741834.688504404514422"
+def check_animadoption(url):
     text = util.query_page(url)
 
     soup = bs4.BeautifulSoup(text, "lxml")
-    images = soup("i",attrs={ "class": "uiMediaThumbImg"})
+    images = soup("i", attrs={"class": "uiMediaThumbImg"})
     count = 0
     for image in images:
         if "1340388899821365749" in image['style']:
@@ -31,24 +30,24 @@ def check_animadoption():
 
     return count
 
-def check_aubergezen():
-    url = "https://www.facebook.com/media/set/?set=a.807747219323790.1073741849.530757323689449"
+
+def check_aubergezen(url):
     text = util.query_page(url)
 
     soup = bs4.BeautifulSoup(text, "lxml")
-    images = soup("i",attrs={ "class": "uiMediaThumbImg"})
+    images = soup("i", attrs={"class": "uiMediaThumbImg"})
     count = 0
     for image in images:
         count += 1
 
     return count
 
-def check_bergerblanc(ville):
-    url = "https://www.bergerblanc.com/?p=animaux&t=adoptions&s=4&l=%s" % ville
+
+def check_bergerblanc(ville, url):
     text = requests.get(url).text
 
     soup = bs4.BeautifulSoup(text, "lxml")
-    images = soup("div", attrs={ "class": "Result"})
+    images = soup("div", attrs={"class": "Result"})
     count = 0
     for image in images:
         if "Adopted" in str(image):
@@ -58,8 +57,8 @@ def check_bergerblanc(ville):
 
     return count
 
-def check_spcalaurentides():
-    url = "http://www.spcall.ca/adoption/adoption-de-chiens/"
+
+def check_spcalaurentides(url):
     text = requests.get(url).text
 
     soup = bs4.BeautifulSoup(text, "lxml")
@@ -76,8 +75,8 @@ def check_spcalaurentides():
 
     return count
 
-def check_nouveaudepart():
-    url = "http://www.animalnouveaudepart.com/services/adoption-d-animaux"
+
+def check_nouveaudepart(url):
     text = requests.get(url).text
 
     soup = bs4.BeautifulSoup(text, "lxml")
@@ -97,7 +96,47 @@ def check_nouveaudepart():
 
     return count
 
-def check_spcamontreal():
+
+def check_animatch(url):
+    text = requests.get(url).text
+
+    soup = bs4.BeautifulSoup(text, "lxml")
+    images_container = soup("div", attrs={"class": "row entry-listing"})[0]
+
+    count = 0
+    for img in images_container.children:
+        count += 1
+
+    return count
+
+
+def check_rivesud(url):
+    text = util.query_page(url)
+
+    soup = bs4.BeautifulSoup(text, "lxml")
+    images = soup("i", attrs={"class": "uiMediaThumbImg"})
+    count = 0
+    for image in images:
+        if "10612651_891595780865675" in image['style']:
+            continue
+        else:
+            count += 1
+
+    return count
+
+
+def check_cabanealiam(url):
+    text = util.query_page(url)
+    with open("out.html", "w") as f:
+        f.write(text)
+
+    soup = bs4.BeautifulSoup(text, "lxml")
+    images = soup("div", attrs={"class": "wslide-dot"})
+    count = len(list(images.children))
+
+    return count
+
+def check_spcamontreal(url):
     key = secrets.get_petfinder_key()
     secret = secrets.get_petfinder_secret()
 
