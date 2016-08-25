@@ -1,18 +1,16 @@
 import requests
 import bs4
-import logging
 import sys
 import util
 import hashlib
 import xml.etree.ElementTree as ET
-import secrets
 from pprint import pprint
 
-### Create your module for api key and notification method
+# Import config file
 try:
     import secrets
 except ImportError:
-    print("Comment import line or create secrets.py module")
+    print("Create config file 'secrets.py' for API secrets")
     sys.exit()
 
 
@@ -136,9 +134,11 @@ def check_cabanealiam(url):
 
     return count
 
+
 def check_spcamontreal(url):
-    key = secrets.get_petfinder_key()
-    secret = secrets.get_petfinder_secret()
+
+    key = secrets.petfinder_key
+    secret = secrets.petfinder_secret
 
     string_to_hash = "%skey=%s" % (secret, key)
     sig = hashlib.md5(string_to_hash.encode()).hexdigest()

@@ -4,16 +4,9 @@ import sys
 import logging
 import util
 from shelters import *
-from pprint import pprint
+
 
 if __name__ == "__main__":
-    # Create your module for api key and notification method
-    try:
-        import secrets
-    except ImportError:
-        print("Comment import line or create secrets.py module")
-        sys.exit()
-
     logger = logging.getLogger('adoptions')
     logger.setLevel(logging.DEBUG)
 
@@ -69,14 +62,14 @@ if __name__ == "__main__":
                 msg = " à %s! %s -> %s" % (shelter, nb_prev, nb_dogs)
                 logger.critical(msg)
                 print(msg, shelter)
-                secrets.notify_me(msg, shelter)
+                util.notify_me(msg, shelter)
 
             new_dict[shelter] = nb_dogs
 
         except util.MyException as e:
             new_dict[shelter] = nb_prev
             logger.error(e)
-            secrets.notify_me("Adoptions", e)
+            util.notify_me("Adoptions", e)
 
     util.write_prec_values(new_dict)
     logger.debug("")

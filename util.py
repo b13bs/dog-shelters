@@ -3,6 +3,14 @@ from pushbullet import Pushbullet
 import re
 import pickle
 import logging
+import sys
+
+# Import config file
+try:
+    import secrets
+except ImportError:
+    print("Create config file 'secrets.py' for API secrets")
+    sys.exit()
 
 
 class MyException(Exception):
@@ -40,9 +48,19 @@ def is_first_run():
     else:
         return False
 
+
 def get_shelter_url(shelter_searched):
     with open("urls.txt") as f:
         for line in f:
             shelter, url = line.split(" ")
             if shelter_searched in shelter:
                 return url
+
+
+def notify_me(title, body):
+
+    pb = Pushbullet(secrets.pushbullet_key)
+    push = pb.push_note(title, "Refuge %s" % body)
+    logger = logging.getLogger('adoptions')
+    logger.critical(push)
+
