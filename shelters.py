@@ -5,54 +5,34 @@ import util
 import hashlib
 import xml.etree.ElementTree as ET
 from pprint import pprint
-
-# Import config file
-try:
-    import secrets
-except ImportError:
-    print("Create config file 'secrets.py' for API secrets")
-    sys.exit()
+import config
+import re
 
 
 def check_animadoption(url):
-    text = util.query_page(url)
+    r = re.search("album_id=([0-9]+)", url)
+    album_id = r.groups()[0]
+    obj = util.query_facebook_album(album_id)
 
-    soup = bs4.BeautifulSoup(text, "lxml")
-    images = soup("i", attrs={"class": "uiMediaThumbImg"})
-    count = 0
-    for image in images:
-        if "1340388899821365749" in image['style']:
-            continue
-        else:
-            count += 1
-
-    return count
+    return obj["count"] - 1
 
 
 def check_aubergezen(url):
-    text = util.query_page(url)
+    r = re.search("album_id=([0-9]+)", url)
+    album_id = r.groups()[0]
+    obj = util.query_facebook_album(album_id)
 
-    soup = bs4.BeautifulSoup(text, "lxml")
-    images = soup("i", attrs={"class": "uiMediaThumbImg"})
-    count = 0
-    for image in images:
-        count += 1
-
-    return count
+    return obj["count"]
 
 
 def check_bergerblanc(ville, url):
     text = requests.get(url).text
 
     soup = bs4.BeautifulSoup(text, "lxml")
-    images = soup("div", attrs={"class": "Result"})
-    count = 0
-    for image in images:
-        if "Adopted" in str(image):
-            continue
-        else:
-            count += 1
+    nb_left = len(soup("div", attrs={"class": "Result ResultLeft"}))
+    nb_right = len(soup("div", attrs={"class": "Result ResultRight"}))
 
+    count = nb_left + nb_right
     return count
 
 
@@ -75,7 +55,7 @@ def check_spcalaurentides(url):
 
 
 def check_nouveaudepart(url):
-    text = requests.get(url).text
+    text = util.query_page(url)
 
     soup = bs4.BeautifulSoup(text, "lxml")
     image_tag = soup("div", attrs={"class": "floatbox"})
@@ -88,6 +68,8 @@ def check_nouveaudepart(url):
         elif "joignez-vous" in str(full_div).lower():
             continue
         elif "aider notre refuge" in str(full_div).lower():
+            continue
+        elif "conclusion" in str(full_div).lower():
             continue
         else:
             count += 1
@@ -109,18 +91,11 @@ def check_animatch(url):
 
 
 def check_rivesud(url):
-    text = util.query_page(url)
+    r = re.search("album_id=([0-9]+)", url)
+    album_id = r.groups()[0]
+    obj = util.query_facebook_album(album_id)
 
-    soup = bs4.BeautifulSoup(text, "lxml")
-    images = soup("i", attrs={"class": "uiMediaThumbImg"})
-    count = 0
-    for image in images:
-        if "10612651_891595780865675" in image['style']:
-            continue
-        else:
-            count += 1
-
-    return count
+    return obj["count"] - 1
 
 
 def check_cabanealiam(url):
@@ -137,8 +112,8 @@ def check_cabanealiam(url):
 
 def check_spcamontreal(url):
 
-    key = secrets.petfinder_key
-    secret = secrets.petfinder_secret
+    key = config.petfinder_key
+    secret = config.petfinder_secret
 
     string_to_hash = "%skey=%s" % (secret, key)
     sig = hashlib.md5(string_to_hash.encode()).hexdigest()

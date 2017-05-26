@@ -59,7 +59,7 @@ if __name__ == "__main__":
             logger.info("%s: nb dogs=%s" % (shelter, nb_dogs))
 
             if nb_dogs > nb_prev and not is_first_run:
-                msg = " à %s! %s -> %s" % (shelter, nb_prev, nb_dogs)
+                msg = "%s: %s nouveaux chiens\n%s" % (shelter, (nb_dogs - nb_prev), url)
                 logger.critical(msg)
                 print(msg, shelter)
                 util.notify_me(msg, shelter)

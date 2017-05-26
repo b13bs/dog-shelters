@@ -1,10 +1,10 @@
-animadoption https://www.facebook.com/media/set/?set=a.728949963803199.1073741834.688504404514422
-aubergezen https://www.facebook.com/media/set/?set=a.807747219323790.1073741849.530757323689449
+animadoption https://www.facebook.com/pg/animadoption/photos/?tab=album&album_id=728949963803199
+aubergezen https://www.facebook.com/pg/RefugeZen/photos/?tab=album&album_id=807747219323790
 bergerblanclaval https://www.bergerblanc.com/?p=animaux&t=adoptions&s=4&l=laval
 spcalaurentides http://www.spcall.ca/adoption/adoption-de-chiens/
 nouveaudepart http://www.animalnouveaudepart.com/services/adoption-d-animaux
 spcamontreal http://api.petfinder.com
 bergerblancmontreal https://www.bergerblanc.com/?p=animaux&t=adoptions&s=4&l=montreal
 animatch http://animatch.ca/fr/adoption-de-chiens/chiens-a-adopter/
-rivesud https://www.facebook.com/ServicesAnimaliersRiveSud/photos/?tab=album&album_id=400504783308113
+rivesud https://www.facebook.com/pg/ServicesAnimaliersRiveSud/photos/?tab=album&album_id=400504783308113
 cabanealiam http://www.lacabanealiam.com/chiens-disponibles.html

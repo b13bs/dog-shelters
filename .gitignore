@@ -63,7 +63,7 @@ target/
 *.p
 
 # doesnt push config file
-secrets.py
+config.py
 
 .idea/
 *.swp

@@ -4,21 +4,23 @@ import re
 import pickle
 import logging
 import sys
-
-# Import config file
-try:
-    import secrets
-except ImportError:
-    print("Create config file 'secrets.py' for API secrets")
-    sys.exit()
+import config
+import facebook
 
 
 class MyException(Exception):
     pass
 
 
+def query_facebook_album(album_id):
+    graph = facebook.GraphAPI(config.facebook_token)
+    obj = graph.get_object("%s?fields=count" % album_id)
+
+    return obj
+
+
 def query_page(url):
-    r = requests.get(url)
+    r = requests.get(url.strip())
     if r.status_code != 200:
         raise MyException("HTTP code %s: %s" % (r.status_code, url))
 
@@ -29,7 +31,7 @@ def get_prec_values():
     try:
         values = pickle.load(open("stored_values.p", "rb"))
     except FileNotFoundError:
-        values = {"animadoption": 0, "aubergezen": 0, "bergerblanclaval" : 0, "spcalaurentides": 0, "nouveaudepart": 0, "spcamontreal": 0, "bergerblancmontreal" : 0, "animatch": 0, "rivesud": 0, "cabanealiam": 0}
+        values = {"animadoption": 0, "aubergezen": 0, "bergerblanclaval": 0, "spcalaurentides": 0, "nouveaudepart": 0, "spcamontreal": 0, "bergerblancmontreal" : 0, "animatch": 0, "rivesud": 0, "cabanealiam": 0}
     return values
 
 
@@ -59,7 +61,7 @@ def get_shelter_url(shelter_searched):
 
 def notify_me(title, body):
 
-    pb = Pushbullet(secrets.pushbullet_key)
+    pb = Pushbullet(config.pushbullet_key)
     push = pb.push_note(title, "Refuge %s" % body)
     logger = logging.getLogger('adoptions')
     logger.critical(push)
