@@ -59,10 +59,10 @@ if __name__ == "__main__":
             logger.info("%s: nb dogs=%s" % (shelter, nb_dogs))
 
             if nb_dogs > nb_prev and not is_first_run:
-                msg = "%s: %s nouveaux chiens\n%s" % (shelter, (nb_dogs - nb_prev), url)
+                title = "Refuge %s" % (shelter)
+                msg = "%s nouveaux chiens\n%s" % ((nb_dogs - nb_prev), url)
                 logger.critical(msg)
-                print(msg, shelter)
-                util.notify_me(msg, shelter)
+                util.notify_me(title, msg)
 
             new_dict[shelter] = nb_dogs
 
