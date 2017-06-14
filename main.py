@@ -3,6 +3,7 @@
 import sys
 import logging
 import util
+import os
 from shelters import *
 
 
@@ -10,7 +11,7 @@ if __name__ == "__main__":
     logger = logging.getLogger('adoptions')
     logger.setLevel(logging.DEBUG)
 
-    handler = logging.FileHandler('adoptions.log')
+    handler = logging.FileHandler("%s.log" % os.path.splitext(os.path.abspath(__file__))[0])
     formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
     handler.setFormatter(formatter)
     logger.addHandler(handler)
@@ -21,53 +22,53 @@ if __name__ == "__main__":
     prec_values = util.get_prec_values()
     new_dict = {}
 
-    for shelter, nb_prev in prec_values.items():
+    for shelter, previous_value in prec_values.items():
         try:
             url = util.get_shelter_url(shelter)
             if shelter == "animadoption":
-                nb_dogs = check_animadoption(url)
+                present_value = check_animadoption(url)
 
             elif shelter == "aubergezen":
-                nb_dogs = check_aubergezen(url)
+                present_value = check_aubergezen(url)
 
             elif shelter == "bergerblancmontreal":
-                nb_dogs = check_bergerblanc("montreal", url)
+                present_value = check_bergerblanc("montreal", url)
 
             elif shelter == "bergerblanclaval":
-                nb_dogs = check_bergerblanc("laval", url)
+                present_value = check_bergerblanc("laval", url)
 
             elif shelter == "spcalaurentides":
-                nb_dogs = check_spcalaurentides(url)
+                present_value = check_spcalaurentides(url)
 
             elif shelter == "nouveaudepart":
-                nb_dogs = check_nouveaudepart(url)
+                present_value = check_nouveaudepart(url)
 
             elif shelter == "animatch":
-                nb_dogs = check_animatch(url)
+                present_value = check_animatch(url)
 
             elif shelter == "rivesud":
-                nb_dogs = check_rivesud(url)
+                present_value = check_rivesud(url)
 
             elif shelter == "cabanealiam":
                 continue
-                nb_dogs = check_cabanealiam(url)
+                present_value = check_cabanealiam(url)
 
             elif shelter == "spcamontreal":
                 continue
-                # nb_dogs = check_spcamontreal()
+                # present_value = check_spcamontreal()
 
-            logger.info("%s: nb dogs=%s" % (shelter, nb_dogs))
+            logger.info("%s: nb dogs=%s" % (shelter, present_value))
 
-            if nb_dogs > nb_prev and not is_first_run:
-                title = "Refuge %s" % (shelter)
-                msg = "%s nouveaux chiens\n%s" % ((nb_dogs - nb_prev), url)
+            if present_value > previous_value and not is_first_run:
+                title = "Refuge %s" % shelter
+                msg = "%s nouveaux chiens\n%s" % ((present_value - previous_value), url)
                 logger.critical(msg)
                 util.notify_me(title, msg)
 
-            new_dict[shelter] = nb_dogs
+            new_dict[shelter] = present_value
 
         except util.MyException as e:
-            new_dict[shelter] = nb_prev
+            new_dict[shelter] = previous_value
             logger.error(e)
             util.notify_me("Adoptions", e)
 

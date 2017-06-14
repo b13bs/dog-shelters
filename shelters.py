@@ -100,8 +100,6 @@ def check_rivesud(url):
 
 def check_cabanealiam(url):
     text = util.query_page(url)
-    with open("out.html", "w") as f:
-        f.write(text)
 
     soup = bs4.BeautifulSoup(text, "lxml")
     images = soup("div", attrs={"class": "wslide-dot"})

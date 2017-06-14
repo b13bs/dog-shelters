@@ -4,9 +4,11 @@ import re
 import pickle
 import logging
 import sys
+import os
 import config
 import facebook
 
+project_path = os.path.dirname(os.path.abspath(__file__))
 
 class MyException(Exception):
     pass
@@ -29,21 +31,22 @@ def query_page(url):
 
 def get_prec_values():
     try:
-        values = pickle.load(open("stored_values.p", "rb"))
+        values = pickle.load(open(os.path.join(project_path, "stored_values.p"), "rb"))
+
     except FileNotFoundError:
         values = {"animadoption": 0, "aubergezen": 0, "bergerblanclaval": 0, "spcalaurentides": 0, "nouveaudepart": 0, "spcamontreal": 0, "bergerblancmontreal" : 0, "animatch": 0, "rivesud": 0, "cabanealiam": 0}
     return values
 
 
 def write_prec_values(values):
-    pickle.dump(values, open("stored_values.p", "wb"))
+    pickle.dump(values, open(os.path.join(project_path, "stored_values.p"), "wb"))
     logger = logging.getLogger('adoptions')
     logger.debug("pickled to disk: %s" % values)
             
 
 def is_first_run():
     try:
-        with open("stored_values.p"):
+        with open(os.path.join(project_path, "stored_values.p")):
             pass
     except FileNotFoundError:
         return True
@@ -52,7 +55,7 @@ def is_first_run():
 
 
 def get_shelter_url(shelter_searched):
-    with open("urls.txt") as f:
+    with open(os.path.join(project_path, "urls.txt")) as f:
         for line in f:
             shelter, url = line.split(" ")
             if shelter_searched in shelter:
@@ -60,9 +63,7 @@ def get_shelter_url(shelter_searched):
 
 
 def notify_me(title, body):
-
-    pb = Pushbullet(config.pushbullet_key)
-    push = pb.push_note(title, "Refuge %s" % body)
+    pb = Pushbullet(config.pushbullet_key_1)
+    push = pb.push_note(title, body)
     logger = logging.getLogger('adoptions')
     logger.critical(push)
-
