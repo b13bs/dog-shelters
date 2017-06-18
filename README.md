@@ -24,5 +24,4 @@ The function "util.notify_me()" could be overwrite to the prefered notification 
 TODO
 ======
 Shelters to add:
-* http://www.spcall.ca/adoption/adoption-de-chiens/
-
+none
