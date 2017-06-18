@@ -62,12 +62,12 @@ if __name__ == "__main__":
                 continue
                 # present_value = check_spcamontreal()
 
-            logger.info("%s: nb dogs=%s" % (shelter, present_value))
+            logger.info("%s: %s chiens" % (shelter, present_value))
 
             if present_value > previous_value and not is_first_run:
                 title = "Refuge %s" % shelter
                 msg = "%s nouveaux chiens\n%s" % ((present_value - previous_value), url)
-                logger.critical(msg)
+                logger.critical(msg.strip())
                 util.notify_me(title, msg)
 
             new_dict[shelter] = present_value
