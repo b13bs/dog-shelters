@@ -18,18 +18,24 @@ def download_page(url):
         f.write(re.sub("(<!--|-->)", "", r.text, re.MULTILINE))
 
 
-def check_carrefourcanin():
+def check_lacabanealiam():
     with open("/tmp/page.html") as f:
         text = f.read()
 
     soup = bs4.BeautifulSoup(text, "lxml")
-    dogs = soup.select(".pet-file")
+    dogs = soup.select(".wsite-content-title")
 
-    return len(dogs)
+    count = 0
+    for dog in dogs:
+        if "Chiens disponibles" not in dog.text and "ADOPT" not in dog.text:
+            count += 1
+
+    return count
+
 
 if __name__ == "__main__":
     if not os.path.isfile("/tmp/page.html"):
-        download_page("http://www.carrefourcanin.com/ui/s_public/animals.aspx?status=0")
+        download_page("http://www.lacabanealiam.com/chiens-disponibles.html")
         print("DOWNLOADING")
 
-    check_carrefourcanin()
+    check_lacabanealiam()

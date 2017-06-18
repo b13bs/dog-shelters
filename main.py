@@ -31,11 +31,8 @@ if __name__ == "__main__":
             elif shelter == "aubergezen":
                 present_value = check_aubergezen(url)
 
-            elif shelter == "bergerblancmontreal":
-                present_value = check_bergerblanc("montreal", url)
-
-            elif shelter == "bergerblanclaval":
-                present_value = check_bergerblanc("laval", url)
+            elif shelter == "bergerblanclaval" or shelter == "bergerblancmontreal":
+                present_value = check_bergerblanc(url)
 
             elif shelter == "spcalaurentides":
                 present_value = check_spcalaurentides(url)
@@ -52,9 +49,8 @@ if __name__ == "__main__":
             elif shelter == "refugemagoo":
                 present_value = check_refugemagoo(url)
 
-            elif shelter == "cabanealiam":
-                continue
-                present_value = check_cabanealiam(url)
+            elif shelter == "lacabanealiam":
+                present_value = check_lacabanealiam(url)
 
             elif shelter == "rosieanimaladoption":
                 present_value = check_rosieanimaladoption(url)

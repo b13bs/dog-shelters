@@ -25,7 +25,7 @@ def check_aubergezen(url):
     return obj["count"]
 
 
-def check_bergerblanc(ville, url):
+def check_bergerblanc(url):
     text = requests.get(url).text
 
     soup = bs4.BeautifulSoup(text, "lxml")
@@ -98,12 +98,16 @@ def check_rivesud(url):
     return obj["count"] - 1
 
 
-def check_cabanealiam(url):
+def check_lacabanealiam(url):
     text = util.query_page(url)
 
     soup = bs4.BeautifulSoup(text, "lxml")
-    images = soup("div", attrs={"class": "wslide-dot"})
-    count = len(list(images.children))
+    dogs = soup.select(".wsite-content-title")
+
+    count = 0
+    for dog in dogs:
+        if "Chiens disponibles" not in dog.text and "ADOPT" not in dog.text:
+            count += 1
 
     return count
 
