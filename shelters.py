@@ -71,6 +71,8 @@ def check_nouveaudepart(url):
             continue
         elif "conclusion" in str(full_div).lower():
             continue
+        elif "dog bazar" in str(full_div).lower():
+            continue
         else:
             count += 1
 
@@ -120,7 +122,8 @@ def check_rosieanimaladoption(url):
     count = 0
 
     for dog in dogs_list:
-        if "is available for adoption" in dog.h3.a.text.lower():
+        string = dog.h3.a.text.lower()
+        if not re.search("is.*(reserved|not.*available)", string):
             count += 1
 
     return count
