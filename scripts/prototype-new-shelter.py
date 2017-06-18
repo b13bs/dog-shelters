@@ -18,24 +18,24 @@ def download_page(url):
         f.write(re.sub("(<!--|-->)", "", r.text, re.MULTILINE))
 
 
-def check_lacabanealiam():
+def check_bergerblanc():
     with open("/tmp/page.html") as f:
         text = f.read()
 
     soup = bs4.BeautifulSoup(text, "lxml")
-    dogs = soup.select(".wsite-content-title")
+    dogs = soup.select(".Result")
+    count = len(dogs)
 
-    count = 0
-    for dog in dogs:
-        if "Chiens disponibles" not in dog.text and "ADOPT" not in dog.text:
-            count += 1
+    adopted = soup.select(".Adopted")
+    count_adopted = len(adopted)
 
-    return count
+    return count - count_adopted
+
 
 
 if __name__ == "__main__":
     if not os.path.isfile("/tmp/page.html"):
-        download_page("http://www.lacabanealiam.com/chiens-disponibles.html")
+        download_page("https://www.bergerblanc.com/?p=animaux&t=adoptions&s=4&l=laval")
         print("DOWNLOADING")
 
-    check_lacabanealiam()
+    check_bergerblanc()

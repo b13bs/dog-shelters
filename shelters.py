@@ -1,5 +1,5 @@
-import requests
 import bs4
+import requests
 import sys
 import util
 import hashlib
@@ -26,18 +26,20 @@ def check_aubergezen(url):
 
 
 def check_bergerblanc(url):
-    text = requests.get(url).text
+    text = util.query_page(url)
 
     soup = bs4.BeautifulSoup(text, "lxml")
-    nb_left = len(soup("div", attrs={"class": "Result ResultLeft"}))
-    nb_right = len(soup("div", attrs={"class": "Result ResultRight"}))
+    dogs = soup.select(".Result")
+    count = len(dogs)
 
-    count = nb_left + nb_right
-    return count
+    adopted = soup.select(".Adopted")
+    count_adopted = len(adopted)
+
+    return count - count_adopted
 
 
 def check_spcalaurentides(url):
-    text = requests.get(url).text
+    text = util.query_page(url)
 
     soup = bs4.BeautifulSoup(text, "lxml")
     images_div = soup("ul", attrs={"class": "list"})[0].contents
@@ -80,7 +82,7 @@ def check_nouveaudepart(url):
 
 
 def check_animatch(url):
-    text = requests.get(url).text
+    text = util.query_page(url)
 
     soup = bs4.BeautifulSoup(text, "lxml")
     images_container = soup("div", attrs={"class": "row entry-listing"})[0]
