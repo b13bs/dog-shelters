@@ -59,6 +59,9 @@ if __name__ == "__main__":
             elif shelter == "rosieanimaladoption":
                 present_value = check_rosieanimaladoption(url)
 
+            elif shelter == "carrefourcanin":
+                present_value = check_carrefourcanin(url)
+
             elif shelter == "spcamontreal":
                 continue
                 # present_value = check_spcamontreal()

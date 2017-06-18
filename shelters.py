@@ -142,6 +142,15 @@ def check_refugemagoo(url):
     return count
 
 
+def check_carrefourcanin(url):
+    text = util.query_page(url)
+
+    soup = bs4.BeautifulSoup(text, "lxml")
+    dogs = soup.select(".pet-file")
+
+    return len(dogs)
+
+
 def check_spcamontreal(url):
 
     key = config.petfinder_key
