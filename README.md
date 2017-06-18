@@ -20,3 +20,13 @@ key = "bar"
 secret = "baz"
 
 The function "util.notify_me()" could be overwrite to the prefered notification method. I implemented mine with [PushBullet](https://www.pushbullet.com/) as I use it for my notification center.
+
+TODO
+======
+Shelters to add:
+* http://www.rosieanimaladoption.ca/dogs-for-adoption/
+* http://www.refugemagoo.org/pour-adoption.html
+* http://www.spcall.ca/adoption/adoption-de-chiens/
+* http://www.carrefourcanin.com/ui/s_public/animals.aspx?status=0
+* http://www.animauxrive-sud.com/fr/adopter/animaux-adoption/?type=25
+
