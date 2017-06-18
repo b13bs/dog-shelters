@@ -5,7 +5,7 @@ import util
 import hashlib
 import xml.etree.ElementTree as ET
 from pprint import pprint
-import config
+import configs.config as config
 import re
 
 
@@ -104,6 +104,40 @@ def check_cabanealiam(url):
     soup = bs4.BeautifulSoup(text, "lxml")
     images = soup("div", attrs={"class": "wslide-dot"})
     count = len(list(images.children))
+
+    return count
+
+
+def check_rosieanimaladoption(url):
+    text = util.query_page(url)
+
+    soup = bs4.BeautifulSoup(text, "lxml")
+    dogs_list = soup("div", attrs={"class": "item"})
+    count = 0
+
+    for dog in dogs_list:
+        if "is available for adoption" in dog.h3.a.text.lower():
+            count += 1
+
+    return count
+
+
+def check_refugemagoo(url):
+    text = util.query_page(url)
+
+    soup = bs4.BeautifulSoup(text, "lxml")
+    dogs = soup.select("div.wsb-image-inner a")
+
+    count = 0
+    for dog in dogs:
+        if "petfinder.com" in dog.attrs["href"]:
+            count += 1
+
+    # remove nb of "Non disponible" images
+    soup = bs4.BeautifulSoup(text, "lxml")
+    for img in soup.find_all("img"):
+        if re.search("height\w?:\w?230px", img.attrs["style"]) and count > 0:
+            count -= 1
 
     return count
 

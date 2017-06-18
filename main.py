@@ -49,9 +49,15 @@ if __name__ == "__main__":
             elif shelter == "rivesud":
                 present_value = check_rivesud(url)
 
+            elif shelter == "refugemagoo":
+                present_value = check_refugemagoo(url)
+
             elif shelter == "cabanealiam":
                 continue
                 present_value = check_cabanealiam(url)
+
+            elif shelter == "rosieanimaladoption":
+                present_value = check_rosieanimaladoption(url)
 
             elif shelter == "spcamontreal":
                 continue
