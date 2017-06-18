@@ -63,7 +63,7 @@ def get_shelter_url(shelter_searched):
 
 
 def notify_me(title, body):
-    pb = Pushbullet(config.pushbullet_key_1)
+    pb = Pushbullet(config.pushbullet_key)
     push = pb.push_note(title, body)
     logger = logging.getLogger('adoptions')
     logger.critical(push)
