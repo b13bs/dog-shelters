@@ -18,24 +18,19 @@ def download_page(url):
         f.write(re.sub("(<!--|-->)", "", r.text, re.MULTILINE))
 
 
-def check_bergerblanc():
-    with open("/tmp/page.html") as f:
-        text = f.read()
+def check_lecaps(url):
+    r = re.search("album_id=([0-9]+)", url)
+    album_id = r.groups()[0]
+    obj = util.query_facebook_album(album_id)
 
-    soup = bs4.BeautifulSoup(text, "lxml")
-    dogs = soup.select(".Result")
-    count = len(dogs)
-
-    adopted = soup.select(".Adopted")
-    count_adopted = len(adopted)
-
-    return count - count_adopted
-
+    return obj["count"] - 1
 
 
 if __name__ == "__main__":
+    url = "https://www.facebook.com/pg/lecapsst/photos/?tab=album&album_id=1545894222343392"
     if not os.path.isfile("/tmp/page.html"):
-        download_page("https://www.bergerblanc.com/?p=animaux&t=adoptions&s=4&l=laval")
+        download_page(url)
         print("DOWNLOADING")
 
-    check_bergerblanc()
+    count = check_lecaps(url)
+    print(count)

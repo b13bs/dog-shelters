@@ -58,6 +58,9 @@ if __name__ == "__main__":
             elif shelter == "carrefourcanin":
                 present_value = check_carrefourcanin(url)
 
+            elif shelter == "lecaps":
+                present_value = check_lecaps(url)
+
             elif shelter == "spcamontreal":
                 continue
                 # present_value = check_spcamontreal()

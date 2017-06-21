@@ -9,6 +9,14 @@ import configs.config as config
 import re
 
 
+def check_lecaps(url):
+    r = re.search("album_id=([0-9]+)", url)
+    album_id = r.groups()[0]
+    obj = util.query_facebook_album(album_id)
+
+    return obj["count"] - 1
+
+
 def check_animadoption(url):
     r = re.search("album_id=([0-9]+)", url)
     album_id = r.groups()[0]
