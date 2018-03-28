@@ -61,15 +61,19 @@ if __name__ == "__main__":
             elif shelter == "lecaps":
                 present_value = check_lecaps(url)
 
-            elif shelter == "spcamontreal":
-                continue
-                # present_value = check_spcamontreal()
+            #elif shelter == "lespattesjaunes":
+            #    present_value = check_lespattesjaunes(url)
 
             logger.info("%s: %s chiens" % (shelter, present_value))
 
             if present_value > previous_value and not is_first_run:
                 title = "Refuge %s" % shelter
-                msg = "%s nouveaux chiens\n%s" % ((present_value - previous_value), url)
+                diff = present_value - previous_value
+                if diff == 1:
+                    msg = "%s nouveau chien\n%s" % (diff, url)
+                elif diff > 1:
+                    msg = "%s nouveaux chiens\n%s" % (diff, url)
+
                 logger.critical(msg.strip())
                 util.notify_me(title, msg)
 

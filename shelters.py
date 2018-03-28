@@ -1,6 +1,7 @@
 import bs4
 import requests
 import sys
+import json
 import util
 import hashlib
 import xml.etree.ElementTree as ET
@@ -73,15 +74,8 @@ def check_nouveaudepart(url):
     count = 0
     for img in image_tag:
         full_div = img.parent
-        if "chat" in str(full_div).lower():
-            continue
-        elif "joignez-vous" in str(full_div).lower():
-            continue
-        elif "aider notre refuge" in str(full_div).lower():
-            continue
-        elif "conclusion" in str(full_div).lower():
-            continue
-        elif "dog bazar" in str(full_div).lower():
+        text = str(full_div).lower()
+        if "chat" in text or "joignez-vous" in text or "aider notre refuge" in text or "conclusion" in text or "dog bazar" in text or "cochon d'inde" in text:
             continue
         else:
             count += 1
@@ -143,28 +137,35 @@ def check_refugemagoo(url):
     text = util.query_page(url)
 
     soup = bs4.BeautifulSoup(text, "lxml")
-    dogs = soup.select("div.wsb-image-inner a")
+    dogs = soup.select("div.img_rounded_corners > a")
 
-    count = 0
-    for dog in dogs:
-        if "petfinder.com" in dog.attrs["href"]:
-            count += 1
-
-    # remove nb of "Non disponible" images
-    soup = bs4.BeautifulSoup(text, "lxml")
-    for img in soup.find_all("img"):
-        if re.search("height\w?:\w?230px", img.attrs["style"]) and count > 0:
-            count -= 1
-
-    return count
+    return len(dogs)
 
 
 def check_carrefourcanin(url):
     text = util.query_page(url)
+    count = 0
 
     soup = bs4.BeautifulSoup(text, "lxml")
-    dogs = soup.select(".pet-file")
+    dogs = soup.find_all("div", {"class": "row", "style": "margin-bottom: 50px;"})
 
+    for dog in dogs:
+        if "chien" in str(dog).lower():
+            count += 1
+
+    return count
+
+
+def check_lespattesjaunes(url):
+    burp0_url = "https://lespattesjaunes.com:443/wp-admin/admin-ajax.php"
+    burp0_cookies = {"pll_language": "fr"}
+    burp0_data = {"action": "ajax_filter_animals",
+                  "filters": "{\"size\":[\"25\",\"24\"],\"gender\":[\"20\"],\"age\":[\"21\"],\"compatibility\":[\"27\"],\"energy\":[\"30\",\"31\"]}",
+                  "cpt": "dogs"}
+    r = requests.post(burp0_url, cookies=burp0_cookies, data=burp0_data)
+    data = json.loads(r.text)['data']
+    soup = bs4.BeautifulSoup(data, "lxml")
+    dogs = soup("div", attrs={"class": "animal-archive-block"})
     return len(dogs)
 
 
@@ -193,7 +194,7 @@ def check_spcamontreal(url):
 
     count = 0
     for dog in dogs:
-        pprint(dog)
+        #pprint(dog)
         count += 1
 
     print(count)
