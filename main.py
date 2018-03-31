@@ -61,8 +61,8 @@ if __name__ == "__main__":
             elif shelter == "lecaps":
                 present_value = check_lecaps(url)
 
-            #elif shelter == "lespattesjaunes":
-            #    present_value = check_lespattesjaunes(url)
+            elif shelter == "lespattesjaunes":
+                present_value = check_lespattesjaunes(url)
 
             logger.info("%s: %s chiens" % (shelter, present_value))
 

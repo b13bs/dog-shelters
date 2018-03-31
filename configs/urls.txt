@@ -11,4 +11,3 @@ rosieanimaladoption http://www.rosieanimaladoption.ca/dogs-for-adoption/
 refugemagoo http://www.refugemagoo.org/pour-adoption.html
 carrefourcanin http://www.carrefourcanin.com/animaux?status=0
 lecaps https://www.facebook.com/pg/lecapsst/photos/?tab=album&album_id=1545894222343392
-lespattesjaunes https://lespattesjaunes.com/wp-admin/admin-ajax.php
