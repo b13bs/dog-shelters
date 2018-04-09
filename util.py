@@ -67,5 +67,6 @@ def get_shelter_url(shelter_searched):
 
 
 def notify_me(title, body):
-    pb = Pushbullet(config.pushbullet_key)
-    pb.push_note(title, body)
+    for key in config.pushbullet_key.split(","):
+        pb = Pushbullet(key)
+        pb.push_note(title, body)
