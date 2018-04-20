@@ -6,6 +6,8 @@ import logging
 import os
 import configs.config as config
 import facebook
+import slackweb
+
 
 project_path = os.path.dirname(os.path.abspath(__file__))
 
@@ -67,6 +69,12 @@ def get_shelter_url(shelter_searched):
 
 
 def notify_me(title, body):
+    notify_me_slack("%s - %s" % (title, body))
     for key in config.pushbullet_key.split(","):
         pb = Pushbullet(key)
         pb.push_note(title, body)
+
+
+def notify_me_slack(text):
+    slack = slackweb.Slack(url=config.slack_url)
+    slack.notify(text=text, username="dog-shelters", icon_emoji=":dog2:")
