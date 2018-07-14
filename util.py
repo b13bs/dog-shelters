@@ -1,5 +1,4 @@
 import requests
-from pushbullet import Pushbullet
 import re
 import pickle
 import logging
@@ -39,8 +38,9 @@ def get_prec_values():
         values = {}
         with open(os.path.join(project_path, "configs", "urls.txt")) as f:
             for line in f:
-                shelter = line.split(" ")[0]
-                values[shelter] = 0
+                if not line.startswith("#"):
+                    shelter = line.split(" ")[0]
+                    values[shelter] = 0
     return values
 
 
@@ -69,12 +69,10 @@ def get_shelter_url(shelter_searched):
 
 
 def notify_me(title, body):
-    notify_me_slack("%s - %s" % (title, body))
-    for key in config.pushbullet_key.split(","):
-        pb = Pushbullet(key)
-        pb.push_note(title, body)
-
-
-def notify_me_slack(text):
     slack = slackweb.Slack(url=config.slack_url)
-    slack.notify(text=text, username="dog-shelters", icon_emoji=":dog2:")
+    msg = "%s - %s" % (title, body)
+    slack.notify(text=msg, channel="#refuge-chien", username="dog-shelters", icon_emoji=":dog2:")
+
+    #for key in config.pushbullet_key.split(","):
+    #    pb = Pushbullet(key)
+    #    pb.push_note(title, body)

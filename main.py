@@ -82,7 +82,7 @@ if __name__ == "__main__":
         except util.MyException as e:
             new_dict[shelter] = previous_value
             logger.error(e)
-            util.notify_me("Adoptions", e)
+            #util.notify_me("Adoptions", e)
 
     util.write_prec_values(new_dict)
     logger.debug("")
