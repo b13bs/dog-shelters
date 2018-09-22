@@ -16,10 +16,12 @@ class MyException(Exception):
 
 
 def query_facebook_album(album_id):
-    graph = facebook.GraphAPI(config.facebook_token)
-    obj = graph.get_object("%s?fields=count" % album_id)
-
-    return obj
+    try:
+        graph = facebook.GraphAPI(config.facebook_token)
+        obj = graph.get_object("%s?fields=count" % album_id)
+        return obj
+    except Exception as e:
+        raise MyException(e)
 
 
 def query_page(url):

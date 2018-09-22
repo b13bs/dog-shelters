@@ -8,6 +8,6 @@ animatch http://animatch.ca/fr/adoption-de-chiens/chiens-a-adopter/
 rivesud https://www.facebook.com/pg/ServicesAnimaliersRiveSud/photos/?tab=album&album_id=400504783308113
 lacabanealiam http://www.lacabanealiam.com/chiens-disponibles.html
 rosieanimaladoption http://www.rosieanimaladoption.ca/dogs-for-adoption/
-refugemagoo http://www.refugemagoo.org/pour-adoption.html
+#refugemagoo http://www.refugemagoo.org/pour-adoption.html
 carrefourcanin http://www.carrefourcanin.com/animaux?status=0
 lecaps https://www.facebook.com/pg/lecapsst/photos/?tab=album&album_id=1545894222343392

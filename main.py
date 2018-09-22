@@ -3,6 +3,7 @@
 import sys
 import logging
 import util
+import time
 import os
 from shelters import *
 
@@ -83,6 +84,8 @@ if __name__ == "__main__":
             new_dict[shelter] = previous_value
             logger.error(e)
             #util.notify_me("Adoptions", e)
+
+        time.sleep(1)
 
     util.write_prec_values(new_dict)
     logger.debug("")
