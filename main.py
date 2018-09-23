@@ -88,7 +88,7 @@ if __name__ == "__main__":
                     msg = "%s nouveaux chiens\n%s" % (diff, url)
 
                 logger.critical(msg.strip())
-                #util.notify_me(title, msg)
+                util.notify_me(title, msg)
 
             new_dict[shelter] = present_value
 
