@@ -62,8 +62,20 @@ if __name__ == "__main__":
             elif shelter == "lecaps":
                 present_value = check_lecaps(url)
 
+            elif shelter == "refugeamr":
+                present_value = check_refugeamr(url)
+
             elif shelter == "lespattesjaunes":
                 present_value = check_lespattesjaunes(url)
+
+            elif shelter == "spamauricie":
+                present_value = check_spamauricie(url)
+
+            elif shelter == "spcalanaudiere":
+                present_value = check_spcalanaudiere(url)
+
+            elif shelter == "lerefugefmv":
+                present_value = check_lerefugefmv(url)
 
             logger.info("%s: %s chiens" % (shelter, present_value))
 
@@ -76,7 +88,7 @@ if __name__ == "__main__":
                     msg = "%s nouveaux chiens\n%s" % (diff, url)
 
                 logger.critical(msg.strip())
-                util.notify_me(title, msg)
+                #util.notify_me(title, msg)
 
             new_dict[shelter] = present_value
 

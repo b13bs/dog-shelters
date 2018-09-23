@@ -40,7 +40,8 @@ def get_prec_values():
         values = {}
         with open(os.path.join(project_path, "configs", "urls.txt")) as f:
             for line in f:
-                if not line.startswith("#"):
+                line = line.strip()
+                if line and not line.startswith("#"):
                     shelter = line.split(" ")[0]
                     values[shelter] = 0
     return values
@@ -65,9 +66,11 @@ def is_first_run():
 def get_shelter_url(shelter_searched):
     with open(os.path.join(project_path, "configs", "urls.txt")) as f:
         for line in f:
-            shelter, url = line.split(" ")
-            if shelter_searched in shelter:
-                return url
+            line = line.strip()
+            if line and not line.startswith("#"):
+                shelter, url = line.split(" ")
+                if shelter_searched in shelter:
+                    return url
 
 
 def notify_me(title, body):

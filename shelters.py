@@ -14,8 +14,12 @@ def check_lecaps(url):
     r = re.search("album_id=([0-9]+)", url)
     album_id = r.groups()[0]
     obj = util.query_facebook_album(album_id)
-
     return obj["count"] - 1
+
+    #text = util.query_page(url)
+    #r = re.search("album_id=([0-9]+)", url)
+    #album_id = r.groups()[0]
+
 
 
 def check_animadoption(url):
@@ -167,6 +171,38 @@ def check_lespattesjaunes(url):
     soup = bs4.BeautifulSoup(data, "lxml")
     dogs = soup("div", attrs={"class": "animal-archive-block"})
     return len(dogs)
+
+
+def check_spamauricie(url):
+    text = util.query_page(url)
+    count = int(re.findall("([0-9]+) résultats", text, re.IGNORECASE)[0])
+    return count
+
+
+def check_refugeamr(url):
+    text = util.query_page(url)
+
+    soup = bs4.BeautifulSoup(text, "lxml")
+    nb_dogs = len(soup.select("div.gallery-item > span.img-wrap"))
+
+    return nb_dogs
+
+
+def check_spcalanaudiere(url):
+    text = util.query_page(url)
+
+    nb_dogs = len(re.findall("Chien \-.*Race", text, re.IGNORECASE))
+
+    return nb_dogs
+
+
+def check_lerefugefmv(url):
+    r = re.search("album_id=([0-9]+)", url)
+    album_id = r.groups()[0]
+    obj = util.query_facebook_album(album_id)
+
+    return obj["count"]
+
 
 
 def check_spcamontreal(url):
