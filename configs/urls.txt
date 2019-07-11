@@ -2,6 +2,7 @@ animadoption https://www.facebook.com/pg/animadoption/photos/?tab=album&album_id
 aubergezen https://www.facebook.com/pg/RefugeZen/photos/?tab=album&album_id=807747219323790
 bergerblanclaval https://www.bergerblanc.com/?p=animaux&t=adoptions&s=4&l=laval
 spcalaurentides http://www.spcall.ca/adoption/adoption-de-chiens/
+#######spcalanaudiere https://www.spcalanaudiere.com/adopter_animal.php?id=7173
 bergerblancmontreal https://www.bergerblanc.com/?p=animaux&t=adoptions&s=4&l=montreal
 animatch http://animatch.ca/fr/adoption-de-chiens/chiens-a-adopter/
 rivesud https://www.facebook.com/pg/ServicesAnimaliersRiveSud/photos/?tab=album&album_id=400504783308113
@@ -10,7 +11,6 @@ rosieanimaladoption http://www.rosieanimaladoption.ca/dogs-for-adoption/
 carrefourcanin http://www.carrefourcanin.com/animaux?status=0
 spamauricie http://www.spamauricie.com/adoption/chiens/?Age=&Sexe=&Race=&Localisation=
 refugeamr https://www.refugeamr.com/chiens
-spcalanaudiere https://www.spcalanaudiere.com/adopter_animal.php?id=7173
 lerefugefmv https://www.facebook.com/pg/refugefmv/photos/?tab=album&album_id=1488396111175461
 ##nouveaudepart http://www.animalnouveaudepart.com/services/adoption-d-animaux
 ##refugemagoo http://www.refugemagoo.org/pour-adoption.html

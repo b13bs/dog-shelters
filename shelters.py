@@ -154,7 +154,7 @@ def check_carrefourcanin(url):
     dogs = soup.find_all("div", {"class": "row", "style": "margin-bottom: 50px;"})
 
     for dog in dogs:
-        if "chien" in str(dog).lower():
+        if "chien" in str(dog).lower() or "chiot" in str(dog).lower():
             count += 1
 
     return count
