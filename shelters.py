@@ -43,10 +43,10 @@ def check_bergerblanc(url, shelter):
 
     soup = bs4.BeautifulSoup(text, "lxml")
 
-    if "laval" in shelter:
+    if "montreal" in shelter:
         return len(soup.select(".chiens_sort.montreal_sort"))
 
-    elif "montreal" in shelter:
+    elif "laval" in shelter:
         a = soup.select(".chiens-laval_sort")
         b = len(a)
         return b
@@ -120,7 +120,7 @@ def check_lacabanealiam(url):
 
     count = 0
     for dog in dogs:
-        if "Chiens disponibles" not in dog.text and "ADOPT" not in dog.text:
+        if "Chiens disponibles" not in dog.text and "ADOPT" not in dog.text and "non-disponible" not in dog.text:
             count += 1
 
     return count

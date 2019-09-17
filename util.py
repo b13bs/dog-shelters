@@ -76,5 +76,4 @@ def get_shelter_url(shelter_searched):
 def notify_me(title, body):
     slack = slackweb.Slack(url=config.slack_url)
     msg = "%s - %s" % (title, body)
-    #slack.notify(text=msg, channel="#refuge-chien", username="dog-shelters", icon_emoji=":dog2:")
-    print(msg)
+    slack.notify(text=msg, channel="#refuge-chien", username="dog-shelters", icon_emoji=":dog2:")
