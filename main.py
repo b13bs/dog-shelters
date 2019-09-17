@@ -33,7 +33,7 @@ if __name__ == "__main__":
                 present_value = check_aubergezen(url)
 
             elif shelter == "bergerblanclaval" or shelter == "bergerblancmontreal":
-                present_value = check_bergerblanc(url)
+                present_value = check_bergerblanc(url, shelter)
 
             elif shelter == "spcalaurentides":
                 present_value = check_spcalaurentides(url)
