@@ -38,17 +38,21 @@ def check_aubergezen(url):
     return obj["count"]
 
 
-def check_bergerblanc(url):
+def check_bergerblanc(url, shelter):
     text = util.query_page(url)
 
     soup = bs4.BeautifulSoup(text, "lxml")
-    dogs = soup.select(".Result")
-    count = len(dogs)
 
-    adopted = soup.select(".Adopted")
-    count_adopted = len(adopted)
+    if "laval" in shelter:
+        return len(soup.select(".chiens_sort.montreal_sort"))
 
-    return count - count_adopted
+    elif "montreal" in shelter:
+        a = soup.select(".chiens-laval_sort")
+        b = len(a)
+        return b
+
+    else:
+        print("PROBLEME")
 
 
 def check_spcalaurentides(url):
