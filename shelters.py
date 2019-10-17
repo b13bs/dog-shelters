@@ -211,43 +211,12 @@ def check_lerefugefmv(url):
 
 def check_spcamontreal(url):
 
-    key = config.petfinder_key
-    secret = config.petfinder_secret
-
-    string_to_hash = "%skey=%s" % (secret, key)
-    sig = hashlib.md5(string_to_hash.encode()).hexdigest()
-    url_api = "http://api.petfinder.com"
-
-    url = "%s/auth.getToken?key=%s&sig=%s" % (url_api, key, sig)
-    text = requests.get(url).text
-    root = ET.fromstring(text)
-    token = root.findall("./auth/token")[0].text
-
-    url = "%s/shelter.getPets?key=%s&token=%s&id=QC06" % (url_api, key, token)
-    text = requests.get(url).text
-
-    with open("/tmp/out.xml", "w") as f:
-        f.write(text)
-
-    root = ET.fromstring(text)
-    dogs = root.findall('./pets/pet[animal="Dog"]')[0]
-
-    count = 0
-    for dog in dogs:
-        #pprint(dog)
-        count += 1
-
-    print(count)
-
-
-    sys.exit()
-
-    with open("/tmp/out.html", "w") as f:
+    text = util.query_page(url)
+    with open("/tmp/a.html", "w") as f:
         f.write(text)
 
     soup = bs4.BeautifulSoup(text, "lxml")
-    print(soup("em", attrs={"data-id": "totalresults"})[0])
+    nb_dogs = len(soup.select("a.card--link > div.card--image"))
 
-    return 0
-
+    return nb_dogs
 

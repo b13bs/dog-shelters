@@ -6,6 +6,7 @@ import os
 import configs.config as config
 import facebook
 import slackweb
+from random import choice
 
 
 project_path = os.path.dirname(os.path.abspath(__file__))
@@ -74,6 +75,7 @@ def get_shelter_url(shelter_searched):
 
 
 def notify_me(title, body):
+    emojis = [":proxy1:",":proxy10:",":proxy11:",":proxy2:",":proxy3:",":proxy4:",":proxy5:",":proxy6:",":proxy7:",":proxy8:",":proxy9:",":daisy1:",":daisy2:",":maggie1:",":maggie2:", ":pixelle1:", "pixelle2:", ":zoe1:", ":zoe2:"]
     slack = slackweb.Slack(url=config.slack_url)
     msg = "%s - %s" % (title, body)
-    slack.notify(text=msg, channel="#refuge-chien", username="dog-shelters", icon_emoji=":dog2:")
+    #slack.notify(text=msg, channel="#refuge-chien", username="dog-shelters", icon_emoji=choice(emojis))

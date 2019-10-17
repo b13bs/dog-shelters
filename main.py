@@ -77,6 +77,9 @@ if __name__ == "__main__":
             elif shelter == "lerefugefmv":
                 present_value = check_lerefugefmv(url)
 
+            elif shelter == "spcamontreal":
+                present_value = check_spcamontreal(url)
+
             logger.info("%s: %s chiens" % (shelter, present_value))
 
             if present_value > previous_value and not is_first_run:

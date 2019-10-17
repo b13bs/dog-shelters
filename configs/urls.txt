@@ -11,6 +11,7 @@ rosieanimaladoption http://www.rosieanimaladoption.ca/dogs-for-adoption/
 carrefourcanin http://www.carrefourcanin.com/animaux?status=0
 spamauricie http://www.spamauricie.com/adoption/chiens/?Age=&Sexe=&Race=&Localisation=
 refugeamr https://www.refugeamr.com/chiens
+spcamontreal https://www.spca.com/adoption/chiens-en-adoption/
 ########lerefugefmv https://www.facebook.com/pg/refugefmv/photos/?tab=album&album_id=1488396111175461
 ##nouveaudepart http://www.animalnouveaudepart.com/services/adoption-d-animaux
 ##refugemagoo http://www.refugemagoo.org/pour-adoption.html
