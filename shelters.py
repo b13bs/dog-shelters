@@ -212,8 +212,6 @@ def check_lerefugefmv(url):
 def check_spcamontreal(url):
 
     text = util.query_page(url)
-    with open("/tmp/a.html", "w") as f:
-        f.write(text)
 
     soup = bs4.BeautifulSoup(text, "lxml")
     nb_dogs = len(soup.select("a.card--link > div.card--image"))
