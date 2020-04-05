@@ -44,8 +44,8 @@ if __name__ == "__main__":
             elif shelter == "animatch":
                 present_value = check_animatch(url)
 
-            elif shelter == "rivesud":
-                present_value = check_rivesud(url)
+            elif shelter == "proanima":
+                present_value = check_proanima(url)
 
             elif shelter == "refugemagoo":
                 present_value = check_refugemagoo(url)
@@ -62,8 +62,8 @@ if __name__ == "__main__":
             elif shelter == "lecaps":
                 present_value = check_lecaps(url)
 
-            elif shelter == "refugeamr":
-                present_value = check_refugeamr(url)
+            elif shelter == "spcaroussillon":
+                present_value = check_spcaroussillon(url)
 
             elif shelter == "lespattesjaunes":
                 present_value = check_lespattesjaunes(url)

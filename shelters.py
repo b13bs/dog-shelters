@@ -44,31 +44,27 @@ def check_bergerblanc(url, shelter):
     soup = bs4.BeautifulSoup(text, "lxml")
 
     if "montreal" in shelter:
-        return len(soup.select(".chiens_sort.montreal_sort"))
+        return int(soup.find("a", {"class": "chiens_sort_button"}).find("small").text.strip())
 
     elif "laval" in shelter:
-        a = soup.select(".chiens-laval_sort")
-        b = len(a)
-        return b
+        return int(soup.find("a", {"class": "chiens-laval_sort_button"}).find("small").text.strip())
 
     else:
         print("PROBLEME")
 
 
 def check_spcalaurentides(url):
-    text = util.query_page(url)
-
-    soup = bs4.BeautifulSoup(text, "lxml")
-    images_div = soup("ul", attrs={"class": "list"})[0].contents
-
     count = 0
-    for image in images_div:
-        if image == "\n":
-            continue
-        elif "Adopt" in str(image):
-            continue
-        else:
-            count += 1
+
+    for i in [0, 9, 19, 29]:
+        text = util.query_page("%s?start=%s" % (url, i))
+        soup = bs4.BeautifulSoup(text, "lxml")
+
+        petpic = len(soup.find_all("div", {'class':'petPic'}))
+        petstatus = len(soup.find_all("div", {'class':'petStatus'}))
+
+        count += petpic
+        count -= petstatus
 
     return count
 
@@ -83,7 +79,7 @@ def check_nouveaudepart(url):
     for img in image_tag:
         full_div = img.parent
         text = str(full_div).lower()
-        if "chat" in text or "joignez-vous" in text or "aider notre refuge" in text or "conclusion" in text or "dog bazar" in text or "cochon d'inde" in text:
+        if "chat" in text or "joignez-vous" in text or "aider notre refuge" in text or "conclusion" in text or "dog bazar" in text or "cochon d'inde" in text or "octodon" in text:
             continue
         else:
             count += 1
@@ -104,12 +100,15 @@ def check_animatch(url):
     return count
 
 
-def check_rivesud(url):
-    r = re.search("album_id=([0-9]+)", url)
-    album_id = r.groups()[0]
-    obj = util.query_facebook_album(album_id)
+def check_proanima(url):
+    text = util.query_page(url)
 
-    return obj["count"] - 1
+    count_dogs = int(re.findall("[0-9]+ résultats sur ([0-9]+)", text)[0])
+    count_adoptés = len(re.findall("Adopté", text))
+
+    count = count_dogs - count_adoptés
+
+    return count
 
 
 def check_lacabanealiam(url):
@@ -157,9 +156,11 @@ def check_carrefourcanin(url):
     soup = bs4.BeautifulSoup(text, "lxml")
     dogs = soup.find_all("div", {"class": "row", "style": "margin-bottom: 50px;"})
 
+    count = len(dogs)
+
     for dog in dogs:
-        if "chien" in str(dog).lower() or "chiot" in str(dog).lower():
-            count += 1
+        if "chat" in str(dog).lower():
+            count -= 1
 
     return count
 
@@ -183,7 +184,7 @@ def check_spamauricie(url):
     return count
 
 
-def check_refugeamr(url):
+def check_spcaroussillon(url):
     text = util.query_page(url)
 
     soup = bs4.BeautifulSoup(text, "lxml")
@@ -214,7 +215,7 @@ def check_spcamontreal(url):
     text = util.query_page(url)
 
     soup = bs4.BeautifulSoup(text, "lxml")
-    nb_dogs = len(soup.select("a.card--link > div.card--image"))
+    nb_dogs = int(soup.find("span", {"class": "type-count"}).text)
 
     return nb_dogs
 
